@@ -9,7 +9,10 @@ export default new Vuex.Store({
     contacts: []
   },
   getters: {
-    // contactName: state => id => state.contacts.name
+    allContacts: state => state.contacts,
+    contact: state => id => {
+      return state.contacts.find(contact => contact.id === id);
+    }
   },
   mutations: {
     setContacts: (state, contacts) => (state.contacts = contacts)
@@ -17,7 +20,7 @@ export default new Vuex.Store({
   actions: {
     async fetchContacts({ commit }) {
       const response = await axios.get(
-        "http://www.json-generator.com/api/json/get/ceOMSPJHnm?indent=2"
+        "http://www.json-generator.com/api/json/get/bVdxwMdHCa?indent=2"
       );
       commit("setContacts", response.data);
     }

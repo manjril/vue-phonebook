@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <Contacts />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Contacts from "./components/Contacts.vue";
+import { mapActions } from "vuex";
 
 export default {
   name: "App",
-  components: {
-    Contacts
+  components: {},
+  methods: {
+    ...mapActions(["fetchContacts"])
+  },
+  created() {
+    this.fetchContacts();
   }
 };
 </script>

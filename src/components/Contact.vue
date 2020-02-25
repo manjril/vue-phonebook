@@ -1,14 +1,20 @@
 <template>
-  <div id="contact-card">{{ contactName }}</div>
+  <div id="contact-card">
+    <h1>{{ contact.name }}</h1>
+    <h2>{{ $route.params.id }}</h2>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 
 export default {
-  el: "#contact-card",
+  name: "Contact",
   computed: {
-    ...mapGetters(["contactName"])
+    ...mapGetters(["allContacts"]),
+    contact() {
+      return this.$store.getters.contact(parseInt(this.$route.params.id));
+    }
   }
 };
 </script>

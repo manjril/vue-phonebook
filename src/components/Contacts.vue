@@ -2,7 +2,7 @@
   <div class="hello">
     <ul>
       <li v-for="(contact, i) in contacts" :key="i">
-        <a :href="contact.index">{{ contact.name }}</a>
+        <router-link :to="{ name: 'id', params: { id: contact.id } }">{{ contact.name }}</router-link>
       </li>
     </ul>
   </div>
@@ -16,10 +16,7 @@ export default {
   methods: {
     ...mapActions(["fetchContacts"])
   },
-  computed: mapState(["contacts"]),
-  created() {
-    this.fetchContacts();
-  }
+  computed: mapState(["contacts"])
 };
 </script>
 
