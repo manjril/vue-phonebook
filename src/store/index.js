@@ -8,6 +8,9 @@ export default new Vuex.Store({
   state: {
     contacts: []
   },
+  getters: {
+    // contactName: state => id => state.contacts.name
+  },
   mutations: {
     setContacts: (state, contacts) => (state.contacts = contacts)
   },

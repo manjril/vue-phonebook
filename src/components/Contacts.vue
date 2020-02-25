@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
     <ul>
-      <li v-for="(contact, i) in contacts" :key="i">{{ contact.name }}</li>
+      <li v-for="(contact, i) in contacts" :key="i">
+        <a :href="contact.index">{{ contact.name }}</a>
+      </li>
     </ul>
   </div>
 </template>
@@ -31,8 +33,7 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+  margin: 0 auto;
 }
 a {
   color: #42b983;
