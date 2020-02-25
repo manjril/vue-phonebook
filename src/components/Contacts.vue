@@ -1,16 +1,22 @@
 <template>
   <div class="hello">
     <ul>
-      <li></li>
+      <li v-for="(contact, i) in contacts" :key="i">{{ contact.name }}</li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+
 export default {
   name: "Contacts",
-  props: {
-    msg: String
+  methods: {
+    ...mapActions(["fetchContacts"])
+  },
+  computed: mapState(["contacts"]),
+  created() {
+    this.fetchContacts();
   }
 };
 </script>
